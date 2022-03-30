@@ -90,7 +90,7 @@ def send_text(message):
 	if dict_users_states.get(message.chat.id) != "stop_now_word":
 		if message.text == "идите вы, дед, куда подальше":
 			bot.send_photo(message.chat.id, photo=open(path_photo_1, "rb"))
-                elif message.text == "Хай!":
+		elif message.text == "Хай!":
 			bot.send_photo(message.chat.id, photo=open(path_photo_2, "rb"))
                 else:
 			word_from_user = re.sub('[?|.|,|!]','', message.text)  #дополнительно чистим от пунктуации сообщение пользователя.
