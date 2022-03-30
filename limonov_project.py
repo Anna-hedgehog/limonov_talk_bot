@@ -92,7 +92,7 @@ def send_text(message):
 			bot.send_photo(message.chat.id, photo=open(path_photo_1, "rb"))
 		elif message.text == "Хай!":
 			bot.send_photo(message.chat.id, photo=open(path_photo_2, "rb"))
-                else:
+		else:
 			word_from_user = re.sub('[?|.|,|!]','', message.text)  #дополнительно чистим от пунктуации сообщение пользователя.
                         gen_text = generate_sent(lim_model, list(word_from_user))  #подключаем генератор через функцию
                         gen_text = re.sub("<.*>", "", gen_text)   #не очень чистый момент, очистка результата от случайно попавших файловых тегов
