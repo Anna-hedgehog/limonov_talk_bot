@@ -90,11 +90,11 @@ def send_text(message):
 	if dict_users_states.get(message.chat.id) != "stop_now_word":
 		if message.text == "идите вы, дед, куда подальше":
 			bot.send_photo(message.chat.id, photo=open(path_photo_1, "rb"))
-        elif message.text == "Хай!":
-		bot.send_photo(message.chat.id, photo=open(path_photo_2, "rb"))
-        else:
-		word_from_user = message.text
-                gen_text = generate_sent(lim_model, list(word_from_user))  #подключаем генератор через функцию
-                gen_text = re.sub("<.*>", "", gen_text)   #не очень чистый момент, очистка результата от случайно попавших файловых тегов
-                bot.send_message(message.chat.id, gen_text)
+                elif message.text == "Хай!":
+			bot.send_photo(message.chat.id, photo=open(path_photo_2, "rb"))
+                else:
+			word_from_user = re.sub(r'[^\w\s]','', message.text)
+                        gen_text = generate_sent(lim_model, list(word_from_user))  #подключаем генератор через функцию
+                        gen_text = re.sub("<.*>", "", gen_text)   #не очень чистый момент, очистка результата от случайно попавших файловых тегов
+                        bot.send_message(message.chat.id, gen_text)
 bot.polling()
