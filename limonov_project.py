@@ -67,7 +67,7 @@ dict_users_states = {}
 """Кнопочная панель:"""
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
-keyboard1.row("Хай!", "идите вы, дед, куда подальше","/help", "пройди опрос, насколько я, это я")
+keyboard1.row("Хай!", "идите вы, дед, куда подальше","/help")
 
 """Реакция бота на команды:"""
 
