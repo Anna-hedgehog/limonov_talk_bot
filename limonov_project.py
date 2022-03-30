@@ -77,8 +77,8 @@ def send_welcome(message):
  
 @bot.message_handler(commands=["help"])
 def bot_messages(message):
-    text_hello = "Что я могу?\nНапиши мне слово или словосочентание, а я найду, что ответить."
-    bot.send_message(message.chat.id, text_hello)
+	text_hello = "Что я могу?\nНапиши мне слово или словосочентание, а я найду, что ответить."
+	bot.send_message(message.chat.id, text_hello)
 
 """Сгенерированный ответ и интерактив (картиночки в ответ):"""
 
