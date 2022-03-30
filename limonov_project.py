@@ -26,10 +26,10 @@ lim_text = [word_tokenize(sent) for sent in sent_tokenize(text)]
 
 """### **Теперь займёмся созданием генератора:**
 
-Создаём 5-граммы:
+Создаём 4-граммы:
 """
 
-n = 5
+n = 4
 train, sents = padded_everygram_pipeline(n, lim_text)
 
 """создаём и тренируем модель:"""
@@ -77,7 +77,7 @@ def send_welcome(message):
  
 @bot.message_handler(commands=["help"])
 def bot_messages(message):
-    text = "Что я могу?\nНапиши мне слово или словосочентание, а я найду, что ответить.\n\nP.s.НЕ ИСПОЛЬЗУЙ ЗНАКИ ПУНКТУАЦИИ!"
+    text = "Что я могу?\nНапиши мне слово или словосочентание, а я найду, что ответить."
     bot.send_message(message.chat.id, text)
 
 """Сгенерированный ответ и интерактив (картиночки в ответ):"""
