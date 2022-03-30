@@ -87,16 +87,14 @@ path_photo_2 = "/home/annushkaLimonova/limonov_talk_bot/lh.jpg"
 
 @bot.message_handler(content_types=["text"])
 def send_text(message):
-   if message.text == "пройди опрос, насколько я, это я":
-       bot.send_poll(message.chat_id, 'Я тот самый дед?', options=['да', 'нет'], quiz, 1)
-   elif dict_users_states.get(message.chat.id) != "stop_now_word":
-     if message.text == "идите вы, дед, куда подальше":
-       bot.send_photo(message.chat.id, photo=open(path_photo_1, "rb"))
-     elif message.text == "Хай!":
-       bot.send_photo(message.chat.id, photo=open(path_photo_2, "rb"))
-     else:
-       word_from_user = message.text
-       gen_text = generate_sent(lim_model, list(word_from_user))  #подключаем генератор через функцию
-       gen_text = re.sub("<.*>", "", gen_text)   #не очень чистый момент, очистка результата от случайно попавших файловых тегов
-       bot.send_message(message.chat.id, gen_text)
+	if dict_users_states.get(message.chat.id) != "stop_now_word":
+		if message.text == "идите вы, дед, куда подальше":
+			bot.send_photo(message.chat.id, photo=open(path_photo_1, "rb"))
+        elif message.text == "Хай!":
+		bot.send_photo(message.chat.id, photo=open(path_photo_2, "rb"))
+        else:
+		word_from_user = message.text
+                gen_text = generate_sent(lim_model, list(word_from_user))  #подключаем генератор через функцию
+                gen_text = re.sub("<.*>", "", gen_text)   #не очень чистый момент, очистка результата от случайно попавших файловых тегов
+                bot.send_message(message.chat.id, gen_text)
 bot.polling()
