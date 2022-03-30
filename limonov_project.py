@@ -95,6 +95,6 @@ def send_text(message):
 		else:
 			word_from_user = re.sub('[?|.|,|!]','', message.text)  #дополнительно чистим от пунктуации сообщение пользователя.
 			gen_text = generate_sent(lim_model, list(word_from_user))  #подключаем генератор через функцию
-                        gen_text = re.sub("<.*>", "", gen_text)   #не очень чистый момент, очистка результата от случайно попавших файловых тегов
-                        bot.send_message(message.chat.id, gen_text)
+			gen_text = re.sub("<.*>", "", gen_text)   #не очень чистый момент, очистка результата от случайно попавших файловых тегов
+			bot.send_message(message.chat.id, gen_text)
 bot.polling()
