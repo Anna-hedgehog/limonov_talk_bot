@@ -89,6 +89,8 @@ path_photo_2 = "/home/annushkaLimonova/limonov_talk_bot/lh.jpg"
 def send_text(message):
    if message.text == "пройди опрос, насколько я, это я":
        bot.send_poll(update.message.chat_id, 'Я тот самый дед?', options=['да', 'нет'])
+   updater.dispatcher.add_handler(CommandHandler('set', poll))  
+   updater.start_polling()
    elif dict_users_states.get(message.chat.id) != "stop_now_word":
      if message.text == "идите вы, дед, куда подальше":
        bot.send_photo(message.chat.id, photo=open(path_photo_1, "rb"))
@@ -99,5 +101,4 @@ def send_text(message):
        gen_text = generate_sent(lim_model, list(word_from_user))  #подключаем генератор через функцию
        gen_text = re.sub("<.*>", "", gen_text)   #не очень чистый момент, очистка результата от случайно попавших файловых тегов
        bot.send_message(message.chat.id, gen_text)
-
 bot.polling()
