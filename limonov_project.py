@@ -1,9 +1,6 @@
-
 import telebot
-
 import os
 import re 
-
 import nltk
 nltk.download('punkt')
 from nltk.tokenize import sent_tokenize
@@ -90,13 +87,13 @@ path_photo_2 = "/home/annushkaLimonova/limonov_talk_bot/lh.jpg"
 
 @bot.message_handler(content_types=["text"])
 def send_text(message):
-   if dict_users_states.get(message.chat.id) != "stop_now_word":
+   if message.text == "пройди опрос, насколько я, это я":
+       bot.send_poll(message.chat.id, 'Я тот самый дед?', options=['да', 'нет'])
+   elif dict_users_states.get(message.chat.id) != "stop_now_word":
      if message.text == "идите вы, дед, куда подальше":
        bot.send_photo(message.chat.id, photo=open(path_photo_1, "rb"))
      elif message.text == "Хай!":
        bot.send_photo(message.chat.id, photo=open(path_photo_2, "rb"))
-     elif message.text == "пройди опрос, насколько я, это я":
-       bot.send_poll(message.chat.id, 'Я тот самый дед?', options=['да', 'нет'])
      else:
        word_from_user = message.text
        gen_text = generate_sent(lim_model, list(word_from_user))  #подключаем генератор через функцию
