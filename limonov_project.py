@@ -17,8 +17,8 @@ from nltk.lm import MLE
 """
 
 text = ""
-for book in os.listdir("Anna-hedgehog/limonov_talk_bot/limonov_books/"):
-   texts = open(os.path.join("Anna-hedgehog/limonov_talk_bot/limonov_books/", book), 'r', encoding='utf-8')
+for book in os.listdir("/home/annushkaLimonova/limonov_talk_bot/limonov_books/"):
+   texts = open(os.path.join("/home/annushkaLimonova/limonov_talk_bot/limonov_books/", book), 'r', encoding='utf-8')
    for line in texts:
        text += line
    texts.close()
@@ -85,8 +85,8 @@ def bot_messages(message):
 
 """Сгенерированный ответ и интерактив (картиночки в ответ):"""
 
-path_photo_1 = "Anna-hedgehog/limonov_talk_bot/lb.jpg"
-path_photo_2 = "Anna-hedgehog/limonov_talk_bot/lh.jpg"
+path_photo_1 = "/home/annushkaLimonova/limonov_talk_bot/lb.jpg"
+path_photo_2 = "/home/annushkaLimonova/limonov_talk_bot/lh.jpg"
 
 @bot.message_handler(content_types=["text"])
 def send_text(message):
