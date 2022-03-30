@@ -66,19 +66,19 @@ dict_users_states = {}
 
 """Кнопочная панель:"""
 
-keyboard1 = telebot.types.ReplyKeyboardMarkup()
-keyboard1.row("Хай!", "идите вы, дед, куда подальше","/help")
+keyboard = telebot.types.ReplyKeyboardMarkup()
+keyboard.row("Хай!", "идите вы, дед, куда подальше","/help")
 
 """Реакция бота на команды:"""
 
 @bot.message_handler(commands=["start"])
 def send_welcome(message):
-	bot.reply_to(message, "Хай, поболтаем? /start", reply_markup=keyboard1)
+	bot.reply_to(message, "Хай, поболтаем? /start", reply_markup=keyboard)
  
 @bot.message_handler(commands=["help"])
 def bot_messages(message):
-    text = "Что я могу?\nНапиши мне слово или словосочентание, а я найду, что ответить."
-    bot.send_message(message.chat.id, text)
+    text_hello = "Что я могу?\nНапиши мне слово или словосочентание, а я найду, что ответить."
+    bot.send_message(message.chat.id, text_hello)
 
 """Сгенерированный ответ и интерактив (картиночки в ответ):"""
 
