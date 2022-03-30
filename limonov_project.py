@@ -17,8 +17,8 @@ from nltk.lm import MLE
 """
 
 text = ""
-for book in os.listdir("Anna-hedgehog/limonov_talk_bot/limonov_books"):
-   texts = open(os.path.join("Anna-hedgehog/limonov_talk_bot/limonov_books", book), 'r', encoding='utf-8')
+for book in os.listdir("Anna-hedgehog/limonov_talk_bot/limonov_books/"):
+   texts = open(os.path.join("Anna-hedgehog/limonov_talk_bot/limonov_books/", book), 'r', encoding='utf-8')
    for line in texts:
        text += line
    texts.close()
